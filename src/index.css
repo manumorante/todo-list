@@ -1,0 +1,103 @@
+@import "modern-normalize";
+
+:root {
+  --primary-color: #007bff;
+  --foreground-color: #333333;
+  --background-color: #f5f5f5;
+  --neutral-color: #cccccc;
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+}
+
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+button {
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+button:focus {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input {
+  border-radius: 8px;
+  border: 1px solid var(--neutral-color);
+  padding: 0.6em 1.2em;
+  background-color: white;
+  transition: border-color 0.25s;
+}
+
+input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Todo list component */
+.todo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Text task */
+.todo__text {
+  flex: 1;
+}
+
+/* Add action button */
+.todo__action {
+  padding: 8px 16px;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  list-style-type: none;
+  padding: 0;
+}
+
+.task {
+  padding: 0.8rem 1.1rem;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.task--completed {
+  text-decoration: line-through;
+  box-shadow: none;
+  color: var(--neutral-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #66b2ff;
+    --background-color: #1e1e1e;
+    --foreground-color-dark: #e0e0e0;
+    --neutral-color: #555555;
+  }
+}
