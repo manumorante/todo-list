@@ -1,9 +1,13 @@
 import TodoList from "./components/TodoList"
+import { useTheme } from "./theme"
 
 function App() {
+  const { toggleTheme } = useTheme()
+
   return (
     <>
-      <h2>TodoList</h2>
+      <button onClick={toggleTheme}>Toggle theme</button>
+
       <TodoList />
     </>
   )
