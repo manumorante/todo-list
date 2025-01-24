@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react"
 import { v4 as uuidv4 } from "uuid"
+import cx from "clsx"
 
 interface Task {
   id: string
@@ -7,8 +8,14 @@ interface Task {
   completed: boolean
 }
 
+const exampleTasks: Task[] = [
+  { id: "1", text: "Develop a New Feature", completed: true },
+  { id: "2", text: "Organize a Team Meeting", completed: false },
+  { id: "3", text: "Write a Blog Post", completed: false },
+]
+
 const TodoList: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>(exampleTasks)
   const [newTask, setNewTask] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -64,11 +71,15 @@ const TodoList: React.FC = () => {
         {tasks.map((task) => (
           <li
             key={task.id}
-            className={`task px-4 py-3 rounded-lg bg-white dark:bg-neutral-800 cursor-pointer ${
-              task.completed
-                ? "line-through text-neutral-400 dark:text-neutral-500"
-                : "shadow text-neutral-600 dark:text-neutral-300"
-            }`}
+            className={cx(
+              "px-4 py-3",
+              "text-neutral-500 bg-white dark:bg-neutral-800",
+              "rounded-lg cursor-pointer",
+              {
+                "line-through  dark:text-neutral-400": task.completed,
+                "shadow  dark:text-neutral-300": !task.completed,
+              }
+            )}
             onClick={() => toggleTask(task.id)}
           >
             {task.text}
