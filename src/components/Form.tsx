@@ -45,8 +45,10 @@ const RegistrationForm: React.FC = () => {
     }
   }
 
+  type InputNames = "username" | "email" | "password" | "confirmPassword"
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
+    const { name, value } = event.target as { name: InputNames; value: string }
     setInputs({
       ...inputs,
       [name]: value,
@@ -62,6 +64,7 @@ const RegistrationForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Form</h2>
       <div>
         <label htmlFor="username">Username:</label>
         <input

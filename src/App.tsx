@@ -1,3 +1,4 @@
+import Form from "./components/Form"
 import TodoList from "./components/TodoList"
 import { useTheme } from "./theme"
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <button onClick={toggleTheme}>Toggle theme</button>
 
+      <Form />
       <TodoList />
     </>
   )
