@@ -8,14 +8,14 @@ interface Task {
   completed: boolean
 }
 
-const exampleTasks: Task[] = [
+const EXAMPLE_TASKS: Task[] = [
   { id: "1", text: "Develop a New Feature", completed: true },
   { id: "2", text: "Organize a Team Meeting", completed: false },
   { id: "3", text: "Write a Blog Post", completed: false },
 ]
 
 const TodoList: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>(exampleTasks)
+  const [tasks, setTasks] = useState<Task[]>(EXAMPLE_TASKS)
   const [newTask, setNewTask] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
 
