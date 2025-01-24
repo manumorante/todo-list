@@ -70,7 +70,7 @@ const RegistrationForm: React.FC = () => {
   const errorCx = cx("text-red-500 mt-1 ml-1")
 
   return (
-    <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <label className="block">
         <span className={labelCx}>Username</span>
         <input

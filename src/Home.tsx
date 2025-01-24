@@ -9,7 +9,7 @@ export default function Home() {
         <h1 className="text-2xl font-medium my-6">INNOCV Solutions</h1>
         <ToggleTheme />
       </div>
-      <div className="flex gap-10">
+      <div className="flex flex-col sm:flex-row gap-10">
         <div className="flex-1">
           <TodoList />
         </div>
