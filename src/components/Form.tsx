@@ -66,7 +66,8 @@ const RegistrationForm: React.FC = () => {
   }
 
   const inputCx = cx("mt-1 block w-full")
-  const labelCx = cx("text-neutral-500")
+  const labelCx = cx("ml-1 text-neutral-500")
+  const errorCx = cx("text-red-500 mt-1 ml-1")
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
@@ -80,7 +81,7 @@ const RegistrationForm: React.FC = () => {
           value={inputs.username}
           onChange={handleChange}
         />
-        {errors.username && <span className="error">{errors.username}</span>}
+        {errors.username && <span className={errorCx}>{errors.username}</span>}
       </label>
 
       <label className="block">
@@ -93,7 +94,7 @@ const RegistrationForm: React.FC = () => {
           value={inputs.email}
           onChange={handleChange}
         />
-        {errors.email && <div className="error">{errors.email}</div>}
+        {errors.email && <div className={errorCx}>{errors.email}</div>}
       </label>
 
       <label className="block">
@@ -106,7 +107,7 @@ const RegistrationForm: React.FC = () => {
           value={inputs.password}
           onChange={handleChange}
         />
-        {errors.password && <div className="error">{errors.password}</div>}
+        {errors.password && <div className={errorCx}>{errors.password}</div>}
       </label>
 
       <label className="block">
@@ -119,7 +120,7 @@ const RegistrationForm: React.FC = () => {
           value={inputs.confirmPassword}
           onChange={handleChange}
         />
-        {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
+        {errors.confirmPassword && <div className={errorCx}>{errors.confirmPassword}</div>}
       </label>
 
       <button type="submit">Register</button>
