@@ -47,8 +47,8 @@ const ThemeProvider = ({ children }: PropsWithChildren): JSX.Element => {
 
   const setBodyThemeClass = (theme: Themes) => {
     if (!isClient()) return
-    document.body.classList.remove(Themes.light, Themes.dark)
-    document.body.classList.add(theme)
+
+    document.body.classList.toggle(Themes.dark, theme === Themes.dark)
   }
 
   useEffect(() => {
