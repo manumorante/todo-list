@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { validateUsername, validateEmail, validatePassword } from "../utils"
 
 const RegistrationForm: React.FC = () => {
   const [inputs, setInputs] = useState({
@@ -15,26 +16,27 @@ const RegistrationForm: React.FC = () => {
   })
 
   const validateInputs = () => {
-    let valid = true
-    if (!inputs.username) {
+    let isValid = true
+    if (!validateUsername(inputs.username)) {
       setErrors((prevErrors) => ({ ...prevErrors, username: "Username is required" }))
-      valid = false
+      isValid = false
     }
-    if (!inputs.email.includes("@")) {
+    // Email must be valid
+    if (!validateEmail(inputs.email)) {
       setErrors((prevErrors) => ({ ...prevErrors, email: "Email is invalid" }))
-      valid = false
+      isValid = false
     }
     // Password must be at least 8 characters
-    if (inputs.password.length < 8) {
+    if (!validatePassword(inputs.password)) {
       setErrors((prevErrors) => ({ ...prevErrors, password: "Password is too short" }))
-      valid = false
+      isValid = false
     }
     // Check if passwords match
     if (inputs.password !== inputs.confirmPassword) {
       setErrors((prevErrors) => ({ ...prevErrors, confirmPassword: "Passwords do not match" }))
-      valid = false
+      isValid = false
     }
-    return valid
+    return isValid
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -63,9 +65,10 @@ const RegistrationForm: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <h2>Form</h2>
-      <div>
+
+      <div className="form-group">
         <label htmlFor="username">Username:</label>
         <input
           id="username"
@@ -76,12 +79,14 @@ const RegistrationForm: React.FC = () => {
         />
         {errors.username && <div className="error">{errors.username}</div>}
       </div>
-      <div>
+
+      <div className="form-group">
         <label htmlFor="email">Email:</label>
         <input id="email" name="email" type="email" value={inputs.email} onChange={handleChange} />
         {errors.email && <div className="error">{errors.email}</div>}
       </div>
-      <div>
+
+      <div className="form-group">
         <label htmlFor="password">Password:</label>
         <input
           id="password"
@@ -92,7 +97,8 @@ const RegistrationForm: React.FC = () => {
         />
         {errors.password && <div className="error">{errors.password}</div>}
       </div>
-      <div>
+
+      <div className="form-group">
         <label htmlFor="confirmPassword">Confirm Password:</label>
         <input
           id="confirmPassword"
