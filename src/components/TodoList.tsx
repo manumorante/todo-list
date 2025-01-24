@@ -44,31 +44,31 @@ const TodoList: React.FC = () => {
 
   return (
     <div>
-      <form onSubmit={addTask} className="todo mb-4">
+      <form onSubmit={addTask} className="flex items-center gap-3 mb-3">
         <input
           ref={inputRef}
           type="text"
           value={newTask}
-          className="todo__text"
+          className="flex-1"
           onChange={handleInputChange}
           placeholder="Enter a new task..."
           // Set focus to the input field when the component is mounted
           autoFocus
         />
-        <button
-          className="todo__action whitespace-nowrap"
-          type="submit"
-          disabled={!isTaskValid(newTask)}
-        >
+        <button className="whitespace-nowrap" type="submit" disabled={!isTaskValid(newTask)}>
           Add Task
         </button>
       </form>
 
-      <ul className="tasks">
+      <ul className="tasks flex flex-col gap-2">
         {tasks.map((task) => (
           <li
             key={task.id}
-            className={`task ${task.completed ? "task--completed" : ""}`}
+            className={`task px-4 py-3 rounded-lg bg-white dark:bg-neutral-800 cursor-pointer ${
+              task.completed
+                ? "line-through text-neutral-400 dark:text-neutral-500"
+                : "shadow text-neutral-600 dark:text-neutral-300"
+            }`}
             onClick={() => toggleTask(task.id)}
           >
             {task.text}
