@@ -44,9 +44,7 @@ const TodoList: React.FC = () => {
 
   return (
     <div>
-      <h2>TodoList</h2>
-
-      <form onSubmit={addTask} className="todo">
+      <form onSubmit={addTask} className="todo mb-4">
         <input
           ref={inputRef}
           type="text"
@@ -57,7 +55,11 @@ const TodoList: React.FC = () => {
           // Set focus to the input field when the component is mounted
           autoFocus
         />
-        <button className="todo__action" type="submit" disabled={!isTaskValid(newTask)}>
+        <button
+          className="todo__action whitespace-nowrap"
+          type="submit"
+          disabled={!isTaskValid(newTask)}
+        >
           Add Task
         </button>
       </form>

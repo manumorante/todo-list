@@ -1,11 +1,11 @@
 import { useTheme } from "../theme"
 
 function ToggleTheme() {
-  const { toggleTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <>
-      <button onClick={toggleTheme}>Toggle theme</button>
+      <button onClick={toggleTheme}>{theme}</button>
     </>
   )
 }

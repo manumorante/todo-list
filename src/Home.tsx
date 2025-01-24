@@ -5,11 +5,19 @@ import ToggleTheme from "./components/ToggleTheme"
 export default function Home() {
   return (
     <>
-      <header>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-medium my-6">INNOCV Solutions</h1>
         <ToggleTheme />
-      </header>
-      <Form />
-      <TodoList />
+      </div>
+      <div className="flex gap-10">
+        <div className="flex-1">
+          <TodoList />
+        </div>
+
+        <div className="flex-1">
+          <Form />
+        </div>
+      </div>
     </>
   )
 }

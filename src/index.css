@@ -11,43 +11,24 @@ body {
   --neutral-500: #333333;
 }
 
-#root {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
 @layer base {
+  input,
   button {
-    border-radius: 8px;
-    padding: 0.6em 1.2em;
-    background-color: var(--primary);
-    border: 1px solid var(--primary);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.25s;
+    @apply rounded-md px-3 py-2 transition;
   }
 
-  button:focus {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
-
-  button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  button {
+    @apply bg-blue-500 text-white
+    border-blue-500
+    cursor-pointer
+    
+    disabled:opacity-60 disabled:cursor-not-allowed;
   }
 
   input {
-    border-radius: 8px;
-    border: 1px solid var(--neutral-300);
-    padding: 0.6em 1.2em;
-    background-color: white;
-    transition: border-color 0.25s;
-  }
-
-  input:focus {
-    border-color: var(--primary);
-    outline: none;
+    @apply bg-white dark:bg-neutral-900
+    border-2 border-neutral-300 focus:border-blue-500 dark:border-neutral-700
+    outline-none;
   }
 }
 
