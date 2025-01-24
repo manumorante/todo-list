@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import cx from "clsx"
 import { validateUsername, validateEmail, validatePassword } from "../utils"
 
 const RegistrationForm: React.FC = () => {
@@ -64,31 +65,41 @@ const RegistrationForm: React.FC = () => {
     }
   }
 
-  return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h2>Form</h2>
+  const inputCx = cx("mt-1 block w-full")
+  const labelCx = cx("text-neutral-500")
 
-      <div className="form-group">
-        <label htmlFor="username">Username:</label>
+  return (
+    <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+      <label className="block">
+        <span className={labelCx}>Username</span>
         <input
+          className={inputCx}
           id="username"
           name="username"
           type="text"
           value={inputs.username}
           onChange={handleChange}
         />
-        {errors.username && <div className="error">{errors.username}</div>}
-      </div>
+        {errors.username && <span className="error">{errors.username}</span>}
+      </label>
 
-      <div className="form-group">
-        <label htmlFor="email">Email:</label>
-        <input id="email" name="email" type="email" value={inputs.email} onChange={handleChange} />
-        {errors.email && <div className="error">{errors.email}</div>}
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
+      <label className="block">
+        <span className={labelCx}>Email</span>
         <input
+          className={inputCx}
+          id="email"
+          name="email"
+          type="email"
+          value={inputs.email}
+          onChange={handleChange}
+        />
+        {errors.email && <div className="error">{errors.email}</div>}
+      </label>
+
+      <label className="block">
+        <span className={labelCx}>Password</span>
+        <input
+          className={inputCx}
           id="password"
           name="password"
           type="password"
@@ -96,11 +107,12 @@ const RegistrationForm: React.FC = () => {
           onChange={handleChange}
         />
         {errors.password && <div className="error">{errors.password}</div>}
-      </div>
+      </label>
 
-      <div className="form-group">
-        <label htmlFor="confirmPassword">Confirm Password:</label>
+      <label className="block">
+        <span className={labelCx}>Confirm Password</span>
         <input
+          className={inputCx}
           id="confirmPassword"
           name="confirmPassword"
           type="password"
@@ -108,7 +120,7 @@ const RegistrationForm: React.FC = () => {
           onChange={handleChange}
         />
         {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
-      </div>
+      </label>
 
       <button type="submit">Register</button>
     </form>
